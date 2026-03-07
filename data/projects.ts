@@ -2,7 +2,9 @@
 
 export type ProjectContentBlock =
 	| { type: "text"; content: string }
+	| { type: "intro"; en: string; ko: string }
 	| { type: "images"; urls: string[] }
+	| { type: "images_desktop_mobile"; desktop: string; mobile: [string, string] }
 	| { type: "stats"; items: { value: string; label: string }[] }
 	| { type: "section_title"; title: string }
 	| { type: "challenge_solution"; challenge: string; solution: string }
@@ -32,6 +34,11 @@ export const projects: Project[] = [
 		subtitle: "Enterprise multi-tenant SaaS for healthcare clinics & suppliers",
 		coverImage: "/projects/jaclit-1.png",
 		content: [
+			{
+				type: "intro",
+				en: "Jaclit 1.0 is a digital inventory management platform designed for healthcare institutions. The project focuses on replacing manual stock tracking with a structured digital system that allows clinics to monitor material movement accurately.\n\nIn this project, I contributed as a developer responsible for implementing backend logic, operational workflows, and inventory calculation mechanisms.\n\nHealthcare logistics often faces discrepancies between the quantity of products ordered and the quantity actually delivered. To address this, the system was designed so that if there is a difference between the ordered and received quantities, the system records the discrepancy without interrupting the workflow. This approach makes the system more resilient to real-world operational conditions while maintaining consistent and traceable data.\n\nThe platform architecture is structured into three main layers: Decision layer — dashboards and operational visibility; Operational layer — daily inventory inflow and outflow processes; Data layer — storage of inventory history and structured records.\n\nThe interface follows a safety-focused approach suitable for medical environments. Role-based access control, mandatory input fields, and visual risk indicators help minimize human errors during inventory operations.\n\nAs a result, the system helped transform clinic inventory management from a manual, person-dependent process into a digital, traceable, and reliable operational system. The platform also creates a foundation for future capabilities such as AI-driven procurement prediction, OCR document scanning, and B2B supply systems.",
+				ko: "Jaclit 1.0은 의료 기관을 위한 디지털 재고 관리 플랫폼입니다. 이 프로젝트는 수작업으로 이루어지던 재고 관리 방식을 구조화된 디지털 시스템으로 전환하여 의료 기관이 자재 흐름을 정확하게 추적할 수 있도록 하는 것을 목표로 합니다.\n\n이 프로젝트에서 저는 개발자로서 백엔드 로직 구현, 운영 워크플로우 설계, 재고 계산 로직 개발에 참여했습니다.\n\n의료 물류 환경에서는 주문된 수량과 실제로 전달된 수량 사이에 차이가 발생하는 경우가 자주 있습니다. 이를 해결하기 위해 시스템은 주문 수량과 실제 수령 수량 사이에 차이가 발생하더라도 해당 차이를 기록하고 전체 프로세스를 중단하지 않도록 설계되었습니다. 이 접근 방식은 실제 운영 환경에서도 시스템이 안정적으로 작동할 수 있도록 하면서 데이터의 일관성과 추적 가능성을 유지합니다.\n\n플랫폼 아키텍처는 다음과 같은 세 가지 주요 계층으로 구성됩니다. 의사결정 계층 — 대시보드 및 전체 운영 가시성; 운영 계층 — 재고 입출고 관리; 데이터 계층 — 재고 이력 및 데이터 저장.\n\n또한 의료 환경의 특성을 고려하여 인터페이스는 안전 중심 설계로 만들어졌습니다. 역할 기반 접근 제어, 필수 입력 필드, 시각적 위험 표시 기능을 통해 인적 오류를 최소화할 수 있습니다.\n\n이 시스템은 병원의 재고 관리를 수작업 중심의 방식에서 디지털 기반의 추적 가능하고 안정적인 운영 시스템으로 전환하는 데 도움을 주었습니다. 또한 향후 AI 기반 수요 예측, OCR 문서 인식, B2B 공급 플랫폼 확장을 위한 기반을 제공합니다.",
+			},
 			{
 				type: "stats",
 				items: [
@@ -65,7 +72,6 @@ export const projects: Project[] = [
 							"PostgreSQL",
 							"JWT",
 							"RBAC",
-							"class-validator",
 							"Transactions",
 						],
 					},
@@ -84,6 +90,7 @@ export const projects: Project[] = [
 						items: [
 							"Docker",
 							"Docker Compose",
+							"AWS EC2",
 							"Nginx",
 							"VPS",
 							"Supabase",
@@ -93,13 +100,24 @@ export const projects: Project[] = [
 					{
 						title: "Integrations",
 						items: [
-							"Supabase Auth",
-							"Brevo (Email)",
-							"Solapi (SMS/Kakao)",
-							"Google Cloud Vision (OCR)",
-							"Telegram Bot",
-							"HIRA API",
+							"AWS EC2",
+							"Supabase",
+							"Brevo",
+							"Solapi",
+							"Google Vision",
+							"Telegram",
+							"HIRA",
 							"Data.go.kr",
+							"Grafana",
+							"Prometheus",
+							"Health Checks",
+							"Performance Logging",
+							"Telegram Alerts",
+							"Rate Limiting",
+							"Firewall Configuration",
+							"Secrets Management",
+							"Audit Logging",
+							"GS1 barcode scanning",
 						],
 					},
 				],
@@ -129,7 +147,7 @@ export const projects: Project[] = [
 					{
 						title: "Production Monitoring",
 						description:
-							"Telegram alerts for DB failures, slow queries, storage thresholds (80%/90%), high-value order failures, and HTTP 5xx. Health check endpoints for Docker and load balancers.",
+							"Telegram alerts, Grafana, Prometheus for DB failures and other issues, slow queries, storage thresholds (80%/90%), high-value order failures, and HTTP 5xx. Health check endpoints for Docker and load balancers.",
 					},
 				],
 			},
@@ -168,27 +186,21 @@ export const projects: Project[] = [
 					{
 						problem: "Real-time production visibility",
 						solution:
-							"TelegramNotificationService for DB, storage, API failures, rollbacks. Only in production with feature flag.",
-						result: "Immediate alerts, no manual monitoring.",
+							"TelegramNotificationService, Grafana, Prometheus for DB, storage, API failures, rollbacks. Only in production with feature flag.",
+						result: "Immediate alerts and manual monitoring.",
 					},
 				],
 			},
-			{
-				type: "section_title",
-				title: "Integrations",
-			},
-			{
-				type: "integrations",
-				items: [
-					"Supabase",
-					"Brevo",
-					"Solapi",
-					"Google Vision",
-					"Telegram",
-					"HIRA",
-					"Data.go.kr",
-				],
-			},
+			// {
+			// 	type: "section_title",
+			// 	title: "Integrations",
+			// },
+			// {
+			// 	type: "integrations",
+			// 	items: [
+
+			// 	],
+			// },
 			{
 				type: "section_title",
 				title: "Impact",
@@ -438,8 +450,8 @@ export const projects: Project[] = [
 				type: "images",
 				urls: [
 					"/projects/cafeu-1.png",
-					"/projects/cafeu-2.jpg",
-					"/projects/cafeu-3.jpg",
+					"/projects/cafeu-2.png",
+					"/projects/cafeu-3.png",
 				],
 			},
 			{
@@ -453,7 +465,7 @@ export const projects: Project[] = [
 			},
 			{
 				type: "images",
-				urls: ["/projects/cafeu-4.jpg", "/projects/cafeu-5.jpg"],
+				urls: ["/projects/cafeu-4.png", "/projects/cafeu-5.png"],
 			},
 			{
 				type: "section_title",
@@ -465,8 +477,9 @@ export const projects: Project[] = [
 					"Both desktop and mobile versions were developed for a seamless, responsive experience. Modern, user-friendly interface with clear navigation, fast load times, and an engaging layout. On mobile: UI optimized for smaller screens, intuitive touch interactions, and a quick, effortless ordering flow for users on the go. Focus on usability, visual appeal, and performance.",
 			},
 			{
-				type: "images",
-				urls: ["/projects/cafeu-6.jpg", "/projects/cafeu-7.jpg"],
+				type: "images_desktop_mobile",
+				desktop: "/projects/cafeu-6.png",
+				mobile: ["/projects/cafeu-7.jpg", "/projects/cafeu-mobile-2.png"],
 			},
 			{
 				type: "section_title",
@@ -479,7 +492,7 @@ export const projects: Project[] = [
 			},
 			{
 				type: "images",
-				urls: ["/projects/cafeu-8.jpg", "/projects/cafeu-9.jpg"],
+				urls: ["/projects/cafeu-8.png"],
 			},
 			{
 				type: "section_title",

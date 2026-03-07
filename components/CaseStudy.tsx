@@ -40,12 +40,11 @@ export default function CaseStudy() {
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="font-display font-bold text-3xl md:text-4xl text-foreground mb-2">
-          {t.sections.caseStudy}
-        </h2>
-        <p className="text-primary font-mono text-sm uppercase tracking-widest mb-4">
-          {t.sections.caseStudySub}
-        </p>
+        <div className="section-header">
+          <h2 className="section-title">{t.sections.caseStudy}</h2>
+          <p className="section-subtitle">{t.sections.caseStudySub}</p>
+          <div className="section-accent" />
+        </div>
         <p className="text-zinc-700 text-sm max-w-2xl mb-12">
           Multi-tenant ERP for medical clinics and suppliers — from zero to production as Solo Lead.
         </p>

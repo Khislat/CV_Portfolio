@@ -17,6 +17,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Anchor scroll: section not hidden under fixed navbar */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -31,9 +36,9 @@ body {
   background-size: 60px 60px;
 }
 
-/* Gradient text */
+/* Gradient text – eye-catching headline */
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-emerald-400 to-accent;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-emerald-500 to-accent bg-[length:200%_auto] font-bold;
 }
 
 /* Glow effect – works on light background */
@@ -50,9 +55,23 @@ body {
   @apply px-6 py-20 md:px-12 lg:px-24 max-w-7xl mx-auto;
 }
 
-/* Card hover lift – subtle shadow on light */
+/* Section header: title + subtitle + accent line (senior-level hierarchy) */
+.section-header {
+  @apply mb-12;
+}
+.section-header .section-title {
+  @apply font-display font-bold text-3xl md:text-4xl text-foreground mb-2 tracking-tight;
+}
+.section-header .section-subtitle {
+  @apply text-primary font-mono text-sm uppercase tracking-widest mb-4;
+}
+.section-header .section-accent {
+  @apply h-0.5 w-16 rounded-full bg-gradient-to-r from-primary to-accent;
+}
+
+/* Card hover – premium lift and shadow */
 .card-hover {
-  @apply transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-lg hover:shadow-black/5;
+  @apply transition-all duration-300 ease-out hover:-translate-y-1.5 hover:scale-[1.01] hover:border-primary hover:shadow-xl hover:shadow-black/10;
 }
 
 /* Custom scrollbar */
@@ -71,4 +90,32 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--muted);
+}
+
+/* Print: one-page CV, hide nav */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #0a0a0a;
+  }
+  .cv-page {
+    box-shadow: none !important;
+    padding: 1rem 1.5rem !important;
+    max-width: 100% !important;
+    border: none !important;
+  }
+  .cv-page,
+  .cv-page * {
+    color: #18181b !important;
+  }
+  .cv-page a {
+    color: #18181b !important;
+    text-decoration: none !important;
+  }
+  .cv-page .text-primary {
+    color: var(--primary) !important;
+  }
 }

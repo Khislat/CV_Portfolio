@@ -32,12 +32,11 @@ export default function Services() {
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="font-display font-bold text-3xl md:text-4xl text-foreground mb-2">
-          {t.sections.services}
-        </h2>
-        <p className="text-primary font-mono text-sm uppercase tracking-widest mb-12">
-          {t.sections.servicesSub}
-        </p>
+        <div className="section-header">
+          <h2 className="section-title">{t.sections.services}</h2>
+          <p className="section-subtitle">{t.sections.servicesSub}</p>
+          <div className="section-accent" />
+        </div>
 
         <div className="grid md:grid-cols-3 gap-6">
           {services.map((service, i) => (

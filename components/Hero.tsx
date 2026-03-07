@@ -5,11 +5,12 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const HERO_PHOTO = "/hero-photo.jpg";
+const HERO_PHOTO = "/portfolio-icon.jpg";
 
 export default function Hero() {
-	const { t } = useLanguage();
+	const { t, locale } = useLanguage();
 	const [photoError, setPhotoError] = useState(false);
+	const cvPdfHref = locale === "ko" ? "/cv-ko.pdf" : "/cv-en.pdf";
 
 	return (
 		<section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-mesh">
@@ -22,14 +23,14 @@ export default function Hero() {
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5 }}
-					className="text-primary font-mono text-sm uppercase tracking-widest mb-4">
+					className="inline-block border-l-4 border-primary bg-primary/5 pl-4 pr-4 py-2 rounded-r-lg text-primary font-mono text-sm uppercase tracking-widest mb-6">
 					{t.hero.badge}
 				</motion.p>
 				<motion.h1
 					initial={{ opacity: 0, y: 24 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5, delay: 0.1 }}
-					className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl mx-auto leading-tight">
+					className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl mx-auto leading-tight tracking-tight">
 					{t.hero.headline}
 					<span className="gradient-text">{t.hero.headlineHighlight}</span>
 				</motion.h1>
@@ -50,10 +51,27 @@ export default function Hero() {
 						className="inline-flex items-center px-6 py-3 rounded-xl bg-primary text-background font-semibold hover:bg-primaryDim transition-all glow hover:shadow-primary/20">
 						{t.hero.ctaPrimary}
 					</a>
-					<a
-						href="#case-study"
-						className="inline-flex items-center px-6 py-3 rounded-xl border border-border text-zinc-800 hover:border-primary/50 hover:text-primary transition-all">
+					<button
+						type="button"
+						onClick={(e) => {
+							e.preventDefault();
+							e.stopPropagation();
+							const el = document.getElementById("portfolio");
+							if (el) {
+								el.scrollIntoView({ behavior: "smooth", block: "start" });
+								window.history.replaceState(null, "", "#portfolio");
+							}
+						}}
+						className="inline-flex items-center px-6 py-3 rounded-xl border border-border text-zinc-800 hover:border-primary/50 hover:text-primary transition-all cursor-pointer">
 						{t.hero.ctaSecondary}
+					</button>
+					<a
+						href={cvPdfHref}
+						target="_blank"
+						rel="noopener noreferrer"
+						download
+						className="inline-flex items-center px-6 py-3 rounded-xl border border-border text-zinc-800 hover:border-primary/50 hover:text-primary transition-all">
+						Download CV (PDF)
 					</a>
 				</motion.div>
 				<motion.div
@@ -61,49 +79,51 @@ export default function Hero() {
 					animate={{ opacity: 1, scale: 1 }}
 					transition={{ duration: 0.5, delay: 0.45 }}
 					className="mt-12 flex justify-center">
-					<div className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-full overflow-hidden border-2 border-primary/30 shadow-[0_0_40px_-8px_rgba(0,212,170,0.25)] ring-4 ring-background/80">
-						{!photoError ? (
-							<Image
-								src={HERO_PHOTO}
-								alt=""
-								fill
-								className="object-cover"
-								sizes="(max-width: 640px) 144px, (max-width: 768px) 176px, 208px"
-								priority
-								onError={() => setPhotoError(true)}
-							/>
-						) : (
-							<div className="absolute inset-0 bg-surface flex items-center justify-center text-primary/50">
-								<svg
-									className="w-16 h-16"
-									fill="none"
-									stroke="currentColor"
-									viewBox="0 0 24 24">
-									<path
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth={1.5}
-										d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-									/>
-								</svg>
-							</div>
-						)}
+					<div className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-full p-1 bg-gradient-to-br from-primary/50 via-primary/20 to-accent/40 shadow-[0_0_48px_-12px_rgba(0,184,148,0.4)] ring-2 ring-white/60">
+						<div className="relative w-full h-full rounded-full overflow-hidden bg-surface">
+							{!photoError ? (
+								<Image
+									src={HERO_PHOTO}
+									alt=""
+									fill
+									className="object-cover"
+									sizes="(max-width: 640px) 144px, (max-width: 768px) 176px, 208px"
+									priority
+									onError={() => setPhotoError(true)}
+								/>
+							) : (
+								<div className="absolute inset-0 flex items-center justify-center text-primary/50">
+									<svg
+										className="w-16 h-16"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24">
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											strokeWidth={1.5}
+											d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+										/>
+									</svg>
+								</div>
+							)}
+						</div>
 					</div>
 				</motion.div>
 				<motion.div
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ delay: 0.6 }}
-					className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-zinc-700">
-					<span className="flex items-center gap-2">
+					className="mt-12 flex flex-wrap justify-center gap-3 text-sm">
+					<span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/90 px-4 py-2 text-zinc-700 shadow-sm">
 						<span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
 						NestJS · Next.js · TypeScript
 					</span>
-					<span className="flex items-center gap-2">
+					<span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/90 px-4 py-2 text-zinc-700 shadow-sm">
 						<span className="w-2 h-2 rounded-full bg-accent" />
 						PostgreSQL · Docker · AWS
 					</span>
-					<span className="flex items-center gap-2">
+					<span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/90 px-4 py-2 text-zinc-700 shadow-sm">
 						<span className="w-2 h-2 rounded-full bg-emerald-500" />
 						Based in South Korea (E-7)
 					</span>
@@ -117,7 +137,9 @@ export default function Hero() {
 				<a
 					href="#about"
 					className="flex flex-col items-center gap-2 text-zinc-700 hover:text-primary transition-colors">
-					<span className="text-xs uppercase tracking-widest">{t.hero.scroll}</span>
+					<span className="text-xs uppercase tracking-widest">
+						{t.hero.scroll}
+					</span>
 					<svg
 						className="w-5 h-5 animate-bounce"
 						fill="none"

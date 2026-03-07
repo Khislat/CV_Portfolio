@@ -8,3 +8,7 @@ Profil rasmlarini shu papkaga qo'ying:
 
   portfolio-icon.jpg
   → Navbar da "Portfolio" yozuvi oldidagi kichik doira.
+
+CV (tilga qarab yuklanadi):
+  cv-en.pdf   → Inglizcha CV (EN tanlanganida).
+  cv-ko.pdf   → Koreyscha CV (KO tanlanganida).

@@ -177,7 +177,7 @@ export const translations: Record<
 				company: "Multi-Tenant Clinic ERP (SaaS) · Solo Technical Lead",
 				points: [
 					"Architected and delivered a production-grade multi-tenant ERP platform for medical clinics and suppliers (B2B/B2C), designed for scalability, strict tenant isolation, and operational resilience.",
-					"Led the entire lifecycle solo — from system architecture and database schema design (50+ tables) to 100+ REST APIs, frontend applications (Next.js 14), and production deployment (Docker, Nginx, VPS).",
+					"Led the entire lifecycle solo — from system architecture and database schema design (50+ tables) to 100+ REST APIs, frontend applications (Next.js 14), and production deployment (Docker, AWS EC2, Nginx, VPS).",
 					"Implemented tenant-aware architecture (RLS strategy), JWT authentication, and role-based access control (Owner/Admin/Manager/Clerk) ensuring secure data isolation across tenants.",
 					"Integrated Google Cloud Vision OCR to automate document processing and reduced manual administrative workflows by ~80%.",
 					"Built real-time observability layer: health checks, slow-query detection, database size monitoring, and Telegram-based production alerting for proactive issue handling.",
@@ -322,7 +322,7 @@ export const translations: Record<
 				company: "멀티 테넌트 Clinic ERP (SaaS) · 단독 기술 리드",
 				points: [
 					"의료 클리닉 및 공급업체(B2B/B2C)를 위한 프로덕션 수준의 멀티 테넌트 ERP 플랫폼을 설계하고 구축했습니다. 확장성과 엄격한 테넌트 데이터 분리, 높은 운영 안정성을 중심으로 설계되었습니다.",
-					"시스템 아키텍처 설계와 50개 이상의 데이터베이스 테이블 구조 설계부터, 100개 이상의 REST API 개발, Next.js 14 기반 프론트엔드 구현, Docker·Nginx·VPS를 활용한 프로덕션 배포까지 전체 라이프사이클을 단독으로 주도했습니다.",
+					"시스템 아키텍처 설계와 50개 이상의 데이터베이스 테이블 구조 설계부터, 100개 이상의 REST API 개발, Next.js 14 기반 프론트엔드 구현, Docker,AWS EC2,Nginx,VPS를 활용한 프로덕션 배포까지 전체 라이프사이클을 단독으로 주도했습니다.",
 					"RLS 기반의 테넌트 인지 아키텍처와 JWT 인증, 역할 기반 접근 제어(Owner/Admin/Manager/Clerk)를 구현하여 테넌트 간 데이터 완전 분리를 보장했습니다.",
 					"Google Cloud Vision OCR을 도입하여 문서 처리 과정을 자동화하고, 행정 업무의 약 80%를 자동화했습니다.",
 					"헬스 체크, 슬로우 쿼리 감지, 데이터베이스 용량 모니터링, Telegram 기반 실시간 알림 시스템을 구축하여 프로덕션 환경에서의 선제적 장애 대응 체계를 마련했습니다.",

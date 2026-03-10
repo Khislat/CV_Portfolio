@@ -54,11 +54,10 @@ function BlockRenderer({
 	locale: Locale;
 }) {
 	if (block.type === "text") {
+		const text = locale === "ko" && block.contentKo ? block.contentKo : block.content;
 		return (
 			<motion.div {...motionProps} className="max-w-2xl mx-auto text-center">
-				<p className="text-zinc-700 text-lg md:text-xl leading-relaxed">
-					{block.content}
-				</p>
+				<p className="text-zinc-700 text-lg md:text-xl leading-relaxed">{text}</p>
 			</motion.div>
 		);
 	}
@@ -66,8 +65,7 @@ function BlockRenderer({
 	if (block.type === "intro") {
 		const text = locale === "ko" ? block.ko : block.en;
 		const paragraphs = text.split(/\n\n+/).filter(Boolean);
-		const overviewLabel =
-			locale === "ko" ? "프로젝트 개요" : "Project overview";
+		const overviewLabel = locale === "ko" ? "프로젝트 개요" : "Project overview";
 		return (
 			<motion.div {...motionProps} className="max-w-3xl mx-auto">
 				<div className="rounded-2xl border border-border bg-surface shadow-sm overflow-hidden">
@@ -109,14 +107,14 @@ function BlockRenderer({
 				{block.urls.map((url, j) => (
 					<div
 						key={j}
-						className={`relative overflow-hidden rounded-2xl ${
-							block.urls.length === 1 ? "aspect-video" : "aspect-[4/3]"
+						className={`relative overflow-hidden rounded-2xl bg-surface ${
+							block.urls.length === 1 ? "aspect-video" : "aspect-[16/10]"
 						}`}>
 						<Image
 							src={url}
 							alt=""
 							fill
-							className="object-cover transition-transform duration-500 hover:scale-105"
+							className="object-contain transition-transform duration-500 hover:scale-105"
 							sizes={
 								block.urls.length === 1
 									? "(max-width: 896px) 100vw, 896px"
@@ -134,11 +132,8 @@ function BlockRenderer({
 	if (block.type === "images_desktop_mobile") {
 		const IphoneFrame = ({ src }: { src: string }) => (
 			<div className="w-full max-w-[200px] md:max-w-[220px] flex flex-col items-center flex-1 min-w-0">
-				{/* iPhone 16 frame */}
 				<div className="relative w-full rounded-[2.25rem] bg-white p-2 shadow-xl border-2 border-zinc-200">
-					{/* Dynamic Island */}
 					<div className="absolute top-3 left-1/2 -translate-x-1/2 z-10 w-20 h-6 rounded-full bg-black" />
-					{/* Screen */}
 					<div className="relative rounded-[1.75rem] overflow-hidden aspect-[9/19.5] bg-black">
 						<Image
 							src={src}
@@ -174,9 +169,7 @@ function BlockRenderer({
 
 	if (block.type === "stats") {
 		return (
-			<motion.div
-				{...motionProps}
-				className="flex flex-wrap justify-center gap-4 md:gap-8">
+			<motion.div {...motionProps} className="flex flex-wrap justify-center gap-4 md:gap-8">
 				{block.items.map((item, j) => (
 					<div
 						key={j}
@@ -185,7 +178,7 @@ function BlockRenderer({
 							{item.value}
 						</div>
 						<div className="text-xs md:text-sm text-zinc-700 mt-1 uppercase tracking-wider">
-							{item.label}
+							{locale === "ko" && item.labelKo ? item.labelKo : item.label}
 						</div>
 					</div>
 				))}
@@ -194,30 +187,35 @@ function BlockRenderer({
 	}
 
 	if (block.type === "section_title") {
+		const title = locale === "ko" && block.titleKo ? block.titleKo : block.title;
 		return (
 			<motion.div {...motionProps} className="text-center">
 				<span className="inline-block w-8 h-0.5 bg-primary rounded-full mb-4" />
 				<h2 className="font-display font-bold text-2xl md:text-3xl text-foreground">
-					{block.title}
+					{title}
 				</h2>
 			</motion.div>
 		);
 	}
 
 	if (block.type === "challenge_solution") {
+		const challenge = locale === "ko" && block.challengeKo ? block.challengeKo : block.challenge;
+		const solution = locale === "ko" && block.solutionKo ? block.solutionKo : block.solution;
+		const challengeLabel = locale === "ko" ? "과제" : "The challenge";
+		const solutionLabel = locale === "ko" ? "해결" : "The solution";
 		return (
 			<motion.div {...motionProps} className="max-w-3xl mx-auto space-y-6">
 				<div className="rounded-2xl border border-border bg-surface/50 p-6 md:p-8">
 					<h3 className="font-display font-semibold text-primary text-sm uppercase tracking-widest mb-3">
-						The challenge
+						{challengeLabel}
 					</h3>
-					<p className="text-zinc-700 leading-relaxed">{block.challenge}</p>
+					<p className="text-zinc-700 leading-relaxed">{challenge}</p>
 				</div>
 				<div className="rounded-2xl border border-primary/30 bg-primary/5 p-6 md:p-8">
 					<h3 className="font-display font-semibold text-primary text-sm uppercase tracking-widest mb-3">
-						The solution
+						{solutionLabel}
 					</h3>
-					<p className="text-zinc-800 leading-relaxed">{block.solution}</p>
+					<p className="text-zinc-800 leading-relaxed">{solution}</p>
 				</div>
 			</motion.div>
 		);
@@ -229,7 +227,7 @@ function BlockRenderer({
 				{block.groups.map((group, gi) => (
 					<div key={gi}>
 						<h4 className="font-display font-semibold text-primary text-sm uppercase tracking-wider mb-3">
-							{group.title}
+							{locale === "ko" && group.titleKo ? group.titleKo : group.title}
 						</h4>
 						<div className="flex flex-wrap gap-2">
 							{group.items.map((item, j) => (
@@ -256,10 +254,10 @@ function BlockRenderer({
 						key={j}
 						className="rounded-2xl border border-border bg-surface p-5 md:p-6 hover:border-primary/30 transition-colors">
 						<h4 className="font-display font-semibold text-foreground mb-2">
-							{card.title}
+							{locale === "ko" && card.titleKo ? card.titleKo : card.title}
 						</h4>
 						<p className="text-zinc-700 text-sm leading-relaxed">
-							{card.description}
+							{locale === "ko" && card.descriptionKo ? card.descriptionKo : card.description}
 						</p>
 					</div>
 				))}
@@ -268,35 +266,38 @@ function BlockRenderer({
 	}
 
 	if (block.type === "problem_solving") {
+		const problemLabel = locale === "ko" ? "문제:" : "Problem:";
+		const solutionLabel = locale === "ko" ? "해결:" : "Solution:";
 		return (
 			<motion.div {...motionProps} className="space-y-6 max-w-3xl mx-auto">
-				{block.items.map((item, j) => (
-					<div
-						key={j}
-						className="rounded-2xl border border-border bg-surface p-5 md:p-6 space-y-3 hover:border-primary/20 transition-colors">
-						<p className="text-zinc-700 text-sm">
-							<span className="text-primary font-medium">Problem:</span>{" "}
-							{item.problem}
-						</p>
-						<p className="text-zinc-700 text-sm">
-							<span className="text-primary font-medium">Solution:</span>{" "}
-							{item.solution}
-						</p>
-						<p className="text-zinc-800 text-sm flex items-start gap-2">
-							<span className="text-primary shrink-0 mt-0.5">✓</span>
-							<span>{item.result}</span>
-						</p>
-					</div>
-				))}
+				{block.items.map((item, j) => {
+					const problem = locale === "ko" && item.problemKo ? item.problemKo : item.problem;
+					const solution = locale === "ko" && item.solutionKo ? item.solutionKo : item.solution;
+					const result = locale === "ko" && item.resultKo ? item.resultKo : item.result;
+					return (
+						<div
+							key={j}
+							className="rounded-2xl border border-border bg-surface p-5 md:p-6 space-y-3 hover:border-primary/20 transition-colors">
+							<p className="text-zinc-700 text-sm">
+								<span className="text-primary font-medium">{problemLabel}</span> {problem}
+							</p>
+							<p className="text-zinc-700 text-sm">
+								<span className="text-primary font-medium">{solutionLabel}</span> {solution}
+							</p>
+							<p className="text-zinc-800 text-sm flex items-start gap-2">
+								<span className="text-primary shrink-0 mt-0.5">✓</span>
+								<span>{result}</span>
+							</p>
+						</div>
+					);
+				})}
 			</motion.div>
 		);
 	}
 
 	if (block.type === "integrations") {
 		return (
-			<motion.div
-				{...motionProps}
-				className="flex flex-wrap justify-center gap-3">
+			<motion.div {...motionProps} className="flex flex-wrap justify-center gap-3">
 				{block.items.map((item, j) => (
 					<span
 						key={j}
@@ -317,10 +318,10 @@ function BlockRenderer({
 					<div
 						key={j}
 						className="text-center rounded-2xl bg-primary/10 border border-primary/20 p-5">
-						<div className="font-display font-bold text-2xl text-primary">
-							{item.value}
+						<div className="font-display font-bold text-2xl text-primary">{item.value}</div>
+						<div className="text-xs text-zinc-700 mt-1">
+							{locale === "ko" && item.labelKo ? item.labelKo : item.label}
 						</div>
-						<div className="text-xs text-zinc-700 mt-1">{item.label}</div>
 					</div>
 				))}
 			</motion.div>
@@ -330,11 +331,7 @@ function BlockRenderer({
 	return null;
 }
 
-export default function ProjectDetailContent({
-	project,
-}: {
-	project: Project;
-}) {
+export default function ProjectDetailContent({ project }: { project: Project }) {
 	const { locale } = useLanguage();
 	return (
 		<main className="min-h-screen bg-background">
@@ -361,15 +358,15 @@ export default function ProjectDetailContent({
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.4 }}
 					className="font-display font-bold text-3xl md:text-4xl text-foreground">
-					{project.title}
+					{locale === "ko" && project.titleKo ? project.titleKo : project.title}
 				</motion.h1>
-				{project.subtitle && (
+				{(locale === "ko" && project.subtitleKo ? project.subtitleKo : project.subtitle) && (
 					<motion.p
 						initial={{ opacity: 0, y: 8 }}
 						animate={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.4, delay: 0.05 }}
 						className="mt-2 text-base text-zinc-700 max-w-2xl">
-						{project.subtitle}
+						{locale === "ko" && project.subtitleKo ? project.subtitleKo : project.subtitle}
 					</motion.p>
 				)}
 				{project.liveUrl && (

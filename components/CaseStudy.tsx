@@ -3,35 +3,9 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const sections = [
-  {
-    title: "The Challenge",
-    content:
-      "Medical clinics and their suppliers needed a single, reliable system: orders, inventory, supplier management, compliance, and reporting — all in a multi-tenant setup where each organization's data stays isolated. Manual processes, spreadsheets, and legacy tools were slow, error-prone, and didn't scale. The ask: design and build this system from scratch, with one lead engineer owning architecture and delivery.",
-  },
-  {
-    title: "Engineering Solution",
-    content: [
-      "Multi-tenant architecture: shared codebase, tenant-scoped data and auth (JWT + RBAC).",
-      "Google Cloud Vision OCR: automated extraction from prescriptions, forms, and documents to cut manual data entry.",
-      "Real-time visibility: Grafana dashboards for system health, performance, and business metrics; Telegram bot for critical alerts so issues are acted on quickly.",
-      "Security: JWT-based auth, role-based access, and a security checklist (auth, input validation, audit logging, secrets) applied across design and rollout.",
-      "Stack: NestJS, Next.js (App Router), TypeScript, PostgreSQL (Prisma), Redis, Docker, Nginx, AWS — built for availability and maintainability.",
-    ],
-  },
-  {
-    title: "Business Impact",
-    content: [
-      "~80% automation of previously manual order and document workflows.",
-      "10+ tenant organizations onboarded with isolated, secure environments.",
-      "Faster incident response and higher confidence in system health thanks to monitoring and Telegram alerts.",
-      "Scalable foundation for adding more clinics and suppliers without re-architecting.",
-    ],
-  },
-];
-
 export default function CaseStudy() {
   const { t } = useLanguage();
+  const sections = t.caseStudySections;
   return (
     <section id="case-study" className="section-padding bg-surface/50">
       <motion.div
@@ -46,7 +20,7 @@ export default function CaseStudy() {
           <div className="section-accent" />
         </div>
         <p className="text-zinc-700 text-sm max-w-2xl mb-12">
-          Multi-tenant ERP for medical clinics and suppliers — from zero to production as Solo Lead.
+          {t.caseStudyIntro}
         </p>
 
         <div className="space-y-8">

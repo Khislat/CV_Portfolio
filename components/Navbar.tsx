@@ -139,14 +139,29 @@ export default function Navbar() {
 						initial={{ opacity: 0, height: 0 }}
 						animate={{ opacity: 1, height: "auto" }}
 						exit={{ opacity: 0, height: 0 }}
-						className="md:hidden bg-surface border-b border-border">
+						transition={{ duration: 0.2 }}
+						className="md:hidden bg-surface border-b border-border overflow-hidden">
 						<ul className="px-6 py-4 flex flex-col gap-4">
 							{navLinks.map((link) => (
 								<li key={link.href}>
 									<a
 										href={link.href}
-										className="block text-zinc-700 hover:text-primary transition-colors"
-										onClick={() => setMobileOpen(false)}>
+										className="block text-zinc-700 hover:text-primary transition-colors py-1"
+										onClick={(e) => {
+											e.preventDefault();
+											setMobileOpen(false);
+											const id = link.href.replace("#", "");
+											const el = document.getElementById(id);
+											const scrollToSection = () => {
+												if (el) {
+													el.scrollIntoView({ behavior: "smooth", block: "start" });
+													window.history.replaceState(null, "", link.href);
+												} else {
+													window.location.href = link.href;
+												}
+											};
+											setTimeout(scrollToSection, 150);
+										}}>
 										{t.nav[link.key]}
 									</a>
 								</li>
@@ -170,7 +185,20 @@ export default function Navbar() {
 								<a
 									href="#contact"
 									className="inline-flex items-center px-4 py-2 rounded-lg bg-primary text-background font-medium text-sm"
-									onClick={() => setMobileOpen(false)}>
+									onClick={(e) => {
+										e.preventDefault();
+										setMobileOpen(false);
+										const el = document.getElementById("contact");
+										const scrollToSection = () => {
+											if (el) {
+												el.scrollIntoView({ behavior: "smooth", block: "start" });
+												window.history.replaceState(null, "", "#contact");
+											} else {
+												window.location.href = "#contact";
+											}
+										};
+										setTimeout(scrollToSection, 150);
+									}}>
 									{t.nav.hireMe}
 								</a>
 							</li>

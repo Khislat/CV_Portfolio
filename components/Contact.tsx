@@ -24,10 +24,7 @@ export default function Contact() {
           <div className="section-accent" />
         </div>
         <p className="text-zinc-700 mt-6 mb-8 leading-relaxed">
-          If you&apos;re looking for a Senior Full-Stack Engineer who can own architecture, delivery, 
-          and operations — from multi-tenant ERPs to AI integrations and cloud infrastructure — 
-          let&apos;s talk. I&apos;m based in South Korea (E-7) and open to full-time roles and 
-          strategic partnerships with teams that care about quality, security, and impact.
+          {t.sections.contactIntro}
         </p>
         <ContactModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
         <div className="flex flex-wrap justify-center gap-4">

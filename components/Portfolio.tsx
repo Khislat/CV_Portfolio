@@ -8,7 +8,9 @@ import { projects } from "@/data/projects";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Portfolio() {
-	const { t } = useLanguage();
+	const { t, locale } = useLanguage();
+	const projectTitle = (p: (typeof projects)[0]) => (locale === "ko" && p.titleKo ? p.titleKo : p.title);
+	const projectSubtitle = (p: (typeof projects)[0]) => (locale === "ko" && p.subtitleKo ? p.subtitleKo : p.subtitle);
 	const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
 
 	const handleImageError = (key: string) => {
@@ -19,7 +21,7 @@ export default function Portfolio() {
 		<section
 			id="portfolio"
 			data-section="portfolio"
-			className="section-padding bg-background">
+			className="px-4 py-10 sm:px-6 sm:py-16 md:px-12 md:py-20 lg:px-24 lg:py-20 max-w-7xl mx-auto bg-background">
 			<motion.div
 				initial={{ opacity: 0, y: 20 }}
 				whileInView={{ opacity: 1, y: 0 }}
@@ -31,7 +33,7 @@ export default function Portfolio() {
 					<div className="section-accent" />
 				</div>
 
-				<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
 					{projects.map((project, i) => (
 						<motion.article
 							key={project.slug}
@@ -50,7 +52,7 @@ export default function Portfolio() {
 									) : (
 										<Image
 											src={project.coverImage}
-											alt={project.title}
+											alt={projectTitle(project)}
 											fill
 											className="object-contain transition-transform duration-300 group-hover:scale-105"
 											sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -58,13 +60,13 @@ export default function Portfolio() {
 										/>
 									)}
 								</div>
-								<div className="p-4">
-									<h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors">
-										{project.title}
+								<div className="p-3 sm:p-4">
+									<h3 className="font-display font-semibold text-foreground text-sm sm:text-base group-hover:text-primary transition-colors line-clamp-2">
+										{projectTitle(project)}
 									</h3>
-									{project.subtitle && (
-										<p className="text-sm text-zinc-700 mt-0.5 truncate">
-											{project.subtitle}
+									{projectSubtitle(project) && (
+										<p className="text-xs sm:text-sm text-zinc-700 mt-0.5 truncate">
+											{projectSubtitle(project)}
 										</p>
 									)}
 								</div>

@@ -61,7 +61,10 @@ export const translations: Record<
 			testimonialsSub: string;
 			contact: string;
 			contactSub: string;
+			contactIntro: string;
 		};
+		caseStudyIntro: string;
+		caseStudySections: { title: string; content: string | string[] }[];
 		skillsCategories: {
 			coreStack: string;
 			databasesInfra: string;
@@ -125,7 +128,7 @@ export const translations: Record<
 			hireMe: "Hire Me",
 		},
 		hero: {
-			badge: "Senior Full-Stack Engineer · System Architect",
+			badge: "Full-Stack Engineer · System Architect",
 			headline: "I don't just write code — ",
 			headlineHighlight: "I ship systems that scale.",
 			subheadline:
@@ -151,7 +154,37 @@ export const translations: Record<
 			testimonialsSub: "What leaders say",
 			contact: "Ready to build systems that scale?",
 			contactSub: "Contact",
+			contactIntro:
+				"If you're looking for a Full-Stack Engineer who can own architecture, delivery, and operations — from multi-tenant ERPs to AI integrations and cloud infrastructure — let's talk. I'm based in South Korea (E-7) and open to full-time roles and strategic partnerships with teams that care about quality, security, and impact.",
 		},
+		caseStudyIntro:
+			"Multi-tenant ERP for medical clinics and suppliers — from zero to production as Solo Lead.",
+		caseStudySections: [
+			{
+				title: "The Challenge",
+				content:
+					"Medical clinics and their suppliers needed a single, reliable system: orders, inventory, supplier management, compliance, and reporting — all in a multi-tenant setup where each organization's data stays isolated. Manual processes, spreadsheets, and legacy tools were slow, error-prone, and didn't scale. The ask: design and build this system from scratch, with one lead engineer owning architecture and delivery.",
+			},
+			{
+				title: "Engineering Solution",
+				content: [
+					"Multi-tenant architecture: shared codebase, tenant-scoped data and auth (JWT + RBAC).",
+					"Google Cloud Vision OCR: automated extraction from prescriptions, forms, and documents to cut manual data entry.",
+					"Real-time visibility: Grafana dashboards for system health, performance, and business metrics; Telegram bot for critical alerts so issues are acted on quickly.",
+					"Security: JWT-based auth, role-based access, and a security checklist (auth, input validation, audit logging, secrets) applied across design and rollout.",
+					"Stack: NestJS, Next.js (App Router), TypeScript, PostgreSQL (Prisma), Redis, Docker, Nginx, AWS — built for availability and maintainability.",
+				],
+			},
+			{
+				title: "Business Impact",
+				content: [
+					"~80% automation of previously manual order and document workflows.",
+					"10+ tenant organizations onboarded with isolated, secure environments.",
+					"Faster incident response and higher confidence in system health thanks to monitoring and Telegram alerts.",
+					"Scalable foundation for adding more clinics and suppliers without re-architecting.",
+				],
+			},
+		],
 		skillsCategories: {
 			coreStack: "Core Stack",
 			databasesInfra: "Databases & Infrastructure",
@@ -172,7 +205,7 @@ export const translations: Record<
 		},
 		resumeTimeline: [
 			{
-				role: "Senior Full-Stack Engineer",
+				role: "Full-Stack Engineer",
 				period: "Current",
 				company: "Multi-Tenant Clinic ERP (SaaS) · Solo Technical Lead",
 				points: [
@@ -186,7 +219,7 @@ export const translations: Record<
 				],
 			},
 			{
-				role: "Full-Stack Developer (Remote)",
+				role: "Full-Stack Developer",
 				period: "2023 – 2025",
 				company: "Exadot LLC — Tashkent, Uzbekistan",
 				points: [
@@ -201,7 +234,7 @@ export const translations: Record<
 				],
 			},
 			{
-				role: "Frontend Developer (Remote)",
+				role: "Frontend Developer",
 				period: "2021 – 2023",
 				company: "Colibrisoft IT Company — Tashkent, Uzbekistan",
 				points: [
@@ -219,26 +252,27 @@ export const translations: Record<
 		],
 		servicesList: [
 			{
-				title: "Enterprise ERP & Full-Stack Systems",
-				subtitle: "B2B / B2C · Multi-Tenant · SaaS",
+				title: "Business Platforms & Internal Systems",
+				subtitle:
+					"B2B / B2C · Multi-Tenant · SaaS · ERP · Operations Automation",
 				description:
-					"End-to-end architecture and delivery of production-grade multi-tenant platforms for clinics, suppliers, and B2B/B2C ecosystems. From schema design (50+ tables) and 100+ REST/GraphQL APIs to Next.js and React SPAs, with tenant isolation (RLS), JWT, RBAC, and scalable relational/NoSQL data (PostgreSQL, MongoDB, MySQL). Delivered solo or in teams for international and large-scale projects, with clean architecture (MVC, DI, middleware) and secure deployment.",
+					"I build systems that help companies manage operations, orders, inventory, and internal workflows more efficiently. These platforms replace manual processes with digital tools, allowing businesses to track products, manage suppliers, control stock, and automate operational tasks. Built using scalable backend architectures with Node.js, NestJS, Java, and modern database systems, supporting real business environments and large datasets. Result: businesses gain better visibility, automation, and operational efficiency.",
 			},
 			{
-				title: "AI Implementation & Automation",
-				subtitle: "OCR · Workflows · LLM Agents",
+				title: "Customer-Facing Web Products",
+				subtitle: "Marketplaces · Ordering Systems · Web Platforms",
 				description:
-					"Integration of AI into real products: Google Cloud Vision OCR for documents and forms, cutting manual administrative workflows by ~80%. LLM-based agents for workflow automation and support. Pixel-perfect UI/UX from wireframes, i18n (React-i18next) for multilingual platforms, and AI-assisted development for enterprise-level delivery in lean timelines. Focus on reliability, cost, and clear business outcomes.",
+					"I develop modern web applications that allow businesses to sell products, interact with customers, and deliver digital services online. These platforms include marketplaces, ordering systems, dashboards, and interactive applications with real-time updates, search, filtering, and responsive user experiences. Built with React, Next.js, and real-time technologies, ensuring smooth performance across devices. Result: businesses get scalable digital products that improve customer experience and increase engagement.",
 			},
 			{
-				title: "Infrastructure, Observability & Security",
-				subtitle: "Nginx · Docker · Monitoring · DevOps",
+				title: "Reliable Infrastructure & Production Monitoring",
+				subtitle: "AWS · Docker · Security · Monitoring & Observability",
 				description:
-					"Production-grade setup: Nginx, Docker, AWS (EC2/S3), Linux VPS, PM2. Health checks, Grafana, Prometheus, performance logging, and Telegram alerts for proactive issue handling. Security-conscious design: JWT, RBAC, least privilege, secrets management, firewall configuration, and checklist-driven hardening. Real-time features (WebSocket/Socket.IO), CI/CD basics, and Monorepo (GitHub/GitLab) workflows.",
+					"I design and deploy production-ready infrastructure that keeps applications stable, secure, and monitored. Systems are deployed using Docker on AWS EC2 and Linux VPS, with NGINX reverse proxy and PM2 for reliable runtime performance. For observability and proactive issue detection, I implement Grafana and Prometheus monitoring, along with Telegram alert systems for real-time notifications on critical events. Security includes JWT authentication, RBAC access control, and secure environment configuration. Result: stable infrastructure, real-time monitoring, and faster response to operational issues as systems scale.",
 			},
 		],
 		footer: {
-			copyright: "Senior Full-Stack Engineer. South Korea (E-7).",
+			copyright: "Full-Stack Engineer. South Korea (E-7).",
 			about: "About",
 			contact: "Contact",
 		},
@@ -270,7 +304,7 @@ export const translations: Record<
 			hireMe: "채용 문의",
 		},
 		hero: {
-			badge: "시니어 풀스택 엔지니어 · 시스템 아키텍트",
+			badge: "풀스택 엔지니어 · 시스템 아키텍트",
 			headline: "코드만 작성하지 않습니다 — ",
 			headlineHighlight: "확장 가능한 시스템을 만듭니다.",
 			subheadline:
@@ -296,7 +330,37 @@ export const translations: Record<
 			testimonialsSub: "리더들의 평가",
 			contact: "확장 가능한 시스템을 함께 만들까요?",
 			contactSub: "연락하기",
+			contactIntro:
+				"아키텍처, 배포, 운영을 책임질 수 있는 풀스택 엔지니어를 찾고 계시다면 — 멀티테넌트 ERP부터 AI 연동, 클라우드 인프라까지 — 이야기 나눠요. 대한민국(E-7) 거주 중이며, 풀타임 포지션과 품질·보안·임팩트를 중시하는 팀과의 전략적 파트너십에 열려 있습니다.",
 		},
+		caseStudyIntro:
+			"의료 기관 및 공급업체를 위한 멀티테넌트 ERP — 단독 리드로 제로부터 프로덕션까지.",
+		caseStudySections: [
+			{
+				title: "과제",
+				content:
+					"의료 기관과 공급업체는 주문, 재고, 공급업체 관리, 규정 준수, 리포팅을 하나의 신뢰할 수 있는 시스템으로 통합해야 했으며, 멀티테넌트 환경에서 조직별 데이터가 격리되어야 했습니다. 수작업, 스프레드시트, 레거시 도구는 느리고 오류에 취약하며 확장이 어려웠습니다. 요구사항: 한 명의 리드 엔지니어가 아키텍처와 납품을 책임지고 처음부터 설계·구축.",
+			},
+			{
+				title: "엔지니어링 해결",
+				content: [
+					"멀티테넌트 아키텍처: 공유 코드베이스, 테넌트 단위 데이터·인증(JWT + RBAC).",
+					"Google Cloud Vision OCR: 처방전·양식·문서에서 자동 추출로 수동 입력 감소.",
+					"실시간 가시성: Grafana 대시보드(시스템 상태, 성능, 비즈니스 지표), Telegram 봇으로 중요 알림·신속 대응.",
+					"보안: JWT 기반 인증, 역할 기반 접근, 보안 체크리스트(인증, 입력 검증, 감사 로그, 시크릿) 설계·배포 전반 적용.",
+					"스택: NestJS, Next.js(App Router), TypeScript, PostgreSQL(Prisma), Redis, Docker, Nginx, AWS — 가용성·유지보수성 중심 구축.",
+				],
+			},
+			{
+				title: "비즈니스 임팩트",
+				content: [
+					"기존 수동 주문·문서 워크플로의 약 80% 자동화.",
+					"10개 이상 테넌트 조직 온보딩, 격리·보안 환경 제공.",
+					"모니터링·Telegram 알림으로 신속한 장애 대응 및 시스템 상태 신뢰도 향상.",
+					"재설계 없이 클리닉·공급업체 추가가 가능한 확장 기반 마련.",
+				],
+			},
+		],
 		skillsCategories: {
 			coreStack: "코어 스택",
 			databasesInfra: "데이터베이스 및 인프라",
@@ -317,7 +381,7 @@ export const translations: Record<
 		},
 		resumeTimeline: [
 			{
-				role: "시니어 풀스택 엔지니어",
+				role: "풀스택 엔지니어",
 				period: "현재",
 				company: "멀티 테넌트 Clinic ERP (SaaS) · 단독 기술 리드",
 				points: [
@@ -331,7 +395,7 @@ export const translations: Record<
 				],
 			},
 			{
-				role: "풀스택 개발자 (원격)",
+				role: "풀스택 개발자",
 				period: "2023 – 2025",
 				company: "Exadot LLC — 타슈켄트, 우즈베키스탄",
 				points: [
@@ -346,7 +410,7 @@ export const translations: Record<
 				],
 			},
 			{
-				role: "Frontend Developer (원격 근무)",
+				role: "Frontend Developer",
 				period: "2021 – 2023",
 				company: "Colibrisoft IT Company — 타슈켄트, 우즈베키스탄",
 				points: [
@@ -373,26 +437,27 @@ export const translations: Record<
 		],
 		servicesList: [
 			{
-				title: "엔터프라이즈 ERP 및 풀스택 시스템",
-				subtitle: "B2B / B2C · 멀티테넌트 · SaaS",
+				title: "Business Platforms & Internal Systems",
+				subtitle:
+					"B2B / B2C · Multi-Tenant · SaaS · ERP · Operations Automation",
 				description:
-					"클리닉, 공급업체, B2B/B2C 생태계를 위한 프로덕션 수준의 멀티테넌트 플랫폼 설계 및 구축. 50개 이상 테이블 스키마 설계, 100개 이상 REST/GraphQL API, Next.js 및 React SPA 개발. 테넌트 격리(RLS), JWT, RBAC, PostgreSQL·MongoDB·MySQL 기반 확장 가능한 데이터 모델. 국제 및 대규모 프로젝트 단독 또는 팀 수행. 클린 아키텍처(MVC, DI, 미들웨어) 및 안전한 배포.",
+					"기업이 운영, 주문, 재고, 내부 워크플로우를 더 효율적으로 관리할 수 있도록 비즈니스 플랫폼과 내부 시스템을 개발합니다.이러한 시스템은 수작업으로 진행되던 업무를 디지털 도구로 전환하여 제품 추적, 공급업체 관리, 재고 관리, 운영 자동화를 가능하게 합니다. Node.js, NestJS, Java 기반의 확장 가능한 백엔드 구조와 현대적인 데이터베이스 시스템을 사용하여 실제 비즈니스 환경과 대규모 데이터를 처리할 수 있는 시스템을 구축합니다. 결과: 기업은 더 높은 운영 가시성, 자동화, 그리고 업무 효율성을 얻을 수 있습니다.",
 			},
 			{
-				title: "AI 구현 및 자동화",
-				subtitle: "OCR · 워크플로우 · LLM 에이전트",
+				title: "Customer-Facing Web Products",
+				subtitle: "Marketplaces · Ordering Systems · Web Platforms",
 				description:
-					"실제 제품에 AI 통합: Google Cloud Vision OCR로 문서·양식 처리, 행정 업무 약 80% 자동화. LLM 기반 에이전트로 워크플로우 자동화 및 지원. 와이어프레임 기반 픽셀 단위 UI/UX, React-i18next 다국어 지원, AI 기반 개발로 단기간 내 엔터프라이즈급 납품. 신뢰성, 비용, 명확한 비즈니스 성과에 초점.",
+					"기업이 제품을 판매하고 고객과 상호작용하며 디지털 서비스를 제공할 수 있는 현대적인 웹 애플리케이션을 개발합니다.이러한 플랫폼에는 마켓플레이스, 주문 시스템, 대시보드, 실시간 업데이트, 검색 및 필터 기능을 포함한 인터랙티브 웹 서비스가 포함됩니다.React, Next.js 및 실시간 기술을 활용하여 다양한 디바이스에서 부드럽게 동작하는 웹 애플리케이션을 구축합니다. 결과: 기업은 고객 경험을 개선하고 사용자 참여도를 높일 수 있는 확장 가능한 디지털 제품을 얻을 수 있습니다.",
 			},
 			{
-				title: "인프라, 관측성 및 보안",
-				subtitle: "Nginx · Docker · 모니터링 · DevOps",
+				title: "Reliable Infrastructure & Production Monitoring",
+				subtitle: "AWS · Docker · Security · Monitoring & Observability",
 				description:
-					"프로덕션급 구성: Nginx, Docker, AWS(EC2/S3), Linux VPS, PM2. 헬스 체크, Grafana, Prometheus, 성능 로깅, Telegram 알림으로 선제적 장애 대응. JWT, RBAC, 최소 권한, 시크릿 관리, 방화벽 설정, 체크리스트 기반 보안 강화. 실시간 기능(WebSocket/Socket.IO), CI/CD 기초, Monorepo(GitHub/GitLab) 워크플로우.",
+					"애플리케이션이 안정적이고 안전하며 지속적으로 모니터링되는 운영 환경을 구축합니다.Docker 기반 애플리케이션을 AWS EC2 및 Linux VPS 환경에 배포하고,NGINX 리버스 프록시와 PM2를 사용하여 안정적인 실행 환경을 구성합니다. 또한 Grafana와 Prometheus 기반 모니터링 시스템과 문제 발생 시 즉시 알림을 보내는 Telegram 알림 시스템을 구축합니다. 보안 측면에서는 JWT 인증, RBAC 권한 관리, 안전한 환경 설정을 적용합니다. 결과: 기업은 안정적인 인프라, 실시간 모니터링, 그리고 문제 발생 시 빠른 대응이 가능한 시스템을 갖추게 됩니다.",
 			},
 		],
 		footer: {
-			copyright: "시니어 풀스택 엔지니어. 대한민국 (E-7).",
+			copyright: "풀스택 엔지니어. 대한민국 (E-7).",
 			about: "소개",
 			contact: "연락",
 		},
@@ -411,6 +476,8 @@ export function getT(locale: Locale) {
 		nav: t.nav,
 		hero: t.hero,
 		sections: t.sections,
+		caseStudyIntro: t.caseStudyIntro,
+		caseStudySections: t.caseStudySections,
 		skillsCategories: t.skillsCategories,
 		skillsSubLabels: t.skillsSubLabels,
 		resumeTimeline: t.resumeTimeline,

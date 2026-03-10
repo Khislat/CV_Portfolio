@@ -3,7 +3,7 @@ import { getProjectBySlug, getAllProjectSlugs } from "@/data/projects";
 import ProjectDetailContent from "@/components/ProjectDetailContent";
 
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = { params: { slug: string } };
 
 export async function generateStaticParams() {
   return getAllProjectSlugs().map((slug) => ({ slug }));

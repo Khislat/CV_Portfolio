@@ -23,11 +23,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Senior Full-Stack Engineer | System Architect",
+  title: "Full-Stack Engineer | System Architect",
   description:
     "I don't just write code — I ship systems that scale. Multi-tenant ERP, AI/OCR, High-Availability infrastructure. Based in South Korea (E-7).",
   openGraph: {
-    title: "Senior Full-Stack Engineer | System Architect",
+    title: "Full-Stack Engineer | System Architect",
     description: "Problem Solver who turns complex requirements into reliable, high-availability systems.",
   },
 };

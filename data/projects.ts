@@ -68,8 +68,8 @@ export const projects: Project[] = [
 		slug: "clinic-erp",
 		title: "Medical Clinic ERP System",
 		titleKo: "멀티테넌트 의료 클리닉 ERP 시스템",
-		subtitle: "Enterprise multi-tenant SaaS for healthcare clinics & suppliers",
-		subtitleKo: "의료 기관 및 공급업체를 위한 엔터프라이즈 멀티테넌트 SaaS",
+		subtitle: "Enterprise multi-tenant SaaS for healthcare clinics & suppliers · Live in production",
+		subtitleKo: "의료 기관 및 공급업체를 위한 엔터프라이즈 멀티테넌트 SaaS · 프로덕션 운영 중",
 		coverImage: "/projects/jaclit-2.png",
 		content: [
 			{
@@ -217,6 +217,40 @@ export const projects: Project[] = [
 			},
 			{
 				type: "section_title",
+				title: "Engineering Decisions",
+				titleKo: "엔지니어링 결정",
+			},
+			{
+				type: "architecture",
+				cards: [
+					{
+						title: "Why monorepo instead of microservices",
+						titleKo: "마이크로서비스 대신 모노레포를 선택한 이유",
+						description:
+							"Faster development iteration, shared domain models across Clinic and Supplier apps, and lower operational complexity for a small team. Single deploy pipeline and consistent tooling.",
+						descriptionKo:
+							"빠른 개발 반복, 클리닉·공급업체 앱 간 공유 도메인 모델, 소규모 팀에 맞는 낮은 운영 복잡도. 단일 배포 파이프라인과 일관된 도구.",
+					},
+					{
+						title: "Why PostgreSQL",
+						titleKo: "PostgreSQL을 선택한 이유",
+						description:
+							"Strong ACID guarantees required for financial operations, order and inventory transactions. Reliable transaction handling and mature ecosystem (Prisma, Supabase).",
+						descriptionKo:
+							"재무·주문·재고 트랜잭션에 필요한 강한 ACID 보장. 안정적인 트랜잭션 처리와 성숙한 생태계(Prisma, Supabase).",
+					},
+					{
+						title: "Why NestJS",
+						titleKo: "NestJS를 선택한 이유",
+						description:
+							"Structured architecture out of the box, dependency injection for testability, and TypeScript-first. Fits long-lived backend services and team collaboration.",
+						descriptionKo:
+							"구조화된 아키텍처, 테스트 용이성을 위한 DI, TypeScript 우선. 장기 운영 백엔드와 팀 협업에 적합.",
+					},
+				],
+			},
+			{
+				type: "section_title",
 				title: "Problem Solving",
 				titleKo: "문제 해결",
 			},
@@ -294,6 +328,11 @@ export const projects: Project[] = [
 			{
 				type: "achievements",
 				items: [
+					{
+						value: "Live",
+						label: "In production",
+						labelKo: "프로덕션 운영 중",
+					},
 					{
 						value: "100%",
 						label: "Data isolation per tenant",

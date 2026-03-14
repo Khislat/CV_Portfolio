@@ -184,6 +184,15 @@ export const translations: Record<
 					"Scalable foundation for adding more clinics and suppliers without re-architecting.",
 				],
 			},
+			{
+				title: "Key Engineering Decisions",
+				content: [
+					"Why monorepo: faster iteration, shared domain models, lower operational complexity for a small team.",
+					"Why PostgreSQL: strong ACID guarantees for financial operations and reliable transaction handling.",
+					"Why NestJS: structured architecture, dependency injection, testability, TypeScript-first.",
+					"System currently running in production.",
+				],
+			},
 		],
 		skillsCategories: {
 			coreStack: "Core Stack",
@@ -358,6 +367,15 @@ export const translations: Record<
 					"10개 이상 테넌트 조직 온보딩, 격리·보안 환경 제공.",
 					"모니터링·Telegram 알림으로 신속한 장애 대응 및 시스템 상태 신뢰도 향상.",
 					"재설계 없이 클리닉·공급업체 추가가 가능한 확장 기반 마련.",
+				],
+			},
+			{
+				title: "주요 엔지니어링 결정",
+				content: [
+					"모노레포 선택: 빠른 반복, 공유 도메인 모델, 소규모 팀에 맞는 낮은 운영 복잡도.",
+					"PostgreSQL: 재무 운영을 위한 강한 ACID 보장과 안정적인 트랜잭션.",
+					"NestJS: 구조화된 아키텍처, DI, 테스트 용이성, TypeScript 우선.",
+					"현재 시스템 프로덕션 운영 중.",
 				],
 			},
 		],

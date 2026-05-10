@@ -9,6 +9,10 @@ Profil rasmlarini shu papkaga qo'ying:
   portfolio-icon.jpg
   → Navbar da "Portfolio" yozuvi oldidagi kichik doira.
 
-CV (tilga qarab yuklanadi):
-  cv-en.pdf   → Inglizcha CV (EN tanlanganida).
-  cv-ko.pdf   → Koreyscha CV (KO tanlanganida).
+CV (PDF):
+  cv.pdf   → Barcha tillar uchun (tavsiya). Faylni shu nom bilan public/ ga qo'ying.
+
+  Ikkala til uchun alohida PDF bo'lsa:
+  cv-en.pdf, cv-ko.pdf  → lib/cv.ts ichida useLocalizedCv = true qiling.
+
+  Eslatma: nom noto'g'ri bo'lsa yoki public/ dan tashqarida bo'lsa tugma 404 beradi.

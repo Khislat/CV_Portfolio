@@ -109,7 +109,7 @@ export const translations: Record<
 		aboutHeadline:
 			"Delivering Senior-Level Impact through Business-Driven Engineering and AI Efficiency.",
 		aboutBody: [
-			"I am a Strong Middle Full-Stack Engineer based in South Korea, holding an E-7 (Professional Worker) visa. My approach to software development is rooted in a deep understanding of the intersection between IT infrastructure and business profitability.",
+			"I am a Full-Stack Engineer (5 years) based in South Korea, holding an E-7 (Professional Worker) visa. My approach to software development is rooted in a deep understanding of the intersection between IT infrastructure and business profitability.",
 			"I don't just build features; I solve business bottlenecks. By leveraging AI-assisted development pipelines, I've mastered the art of high-efficiency engineering.",
 			"A testament to this is my recent solo-led Multi-tenant Medical ERP project: I architected, developed, and deployed the entire production-ready system in just 3 months—a timeline that typically requires a much larger team.",
 			"My focus is on drastically reducing manual input and human error. In my last project, I automated 80% of administrative tasks through AI-powered OCR and smart workflow orchestration.",
@@ -215,7 +215,7 @@ export const translations: Record<
 		resumeTimeline: [
 			{
 				role: "Full-Stack Engineer",
-				period: "Current",
+				period: "2025 – Present",
 				company: "Multi-Tenant Clinic ERP (SaaS) · Solo Technical Lead",
 				points: [
 					"Architected and delivered a production-grade multi-tenant ERP platform for medical clinics and suppliers (B2B/B2C), designed for scalability, strict tenant isolation, and operational resilience.",

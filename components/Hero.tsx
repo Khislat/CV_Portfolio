@@ -4,13 +4,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { CV_DOWNLOAD_FILENAME, getCvPdfHref } from "@/lib/cv";
 
 const HERO_PHOTO = "/portfolio-icon.jpg";
 
 export default function Hero() {
 	const { t, locale } = useLanguage();
 	const [photoError, setPhotoError] = useState(false);
-	const cvPdfHref = locale === "ko" ? "/cv-ko.pdf" : "/cv-en.pdf";
+	const cvPdfHref = getCvPdfHref(locale);
 
 	return (
 		<section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-mesh">
@@ -67,9 +68,7 @@ export default function Hero() {
 					</button>
 					<a
 						href={cvPdfHref}
-						target="_blank"
-						rel="noopener noreferrer"
-						download
+						download={CV_DOWNLOAD_FILENAME}
 						className="inline-flex items-center px-6 py-3 rounded-xl border border-border text-zinc-800 hover:border-primary/50 hover:text-primary transition-all">
 						Download CV (PDF)
 					</a>

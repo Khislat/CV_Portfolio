@@ -216,7 +216,7 @@ export const translations: Record<
 			{
 				role: "Full-Stack Engineer",
 				period: "2025 – Present",
-				company: "Multi-Tenant Clinic ERP (SaaS) · Solo Technical Lead",
+				company: "FindBeauty Company — South Korea, Seoul",
 				points: [
 					"Architected and delivered a production-grade multi-tenant ERP platform for medical clinics and suppliers (B2B/B2C), designed for scalability, strict tenant isolation, and operational resilience.",
 					"Led the entire lifecycle solo — from system architecture and database schema design (50+ tables) to 100+ REST APIs, frontend applications (Next.js 14), and production deployment (Docker, AWS EC2, Nginx, VPS).",
@@ -281,7 +281,7 @@ export const translations: Record<
 			},
 		],
 		footer: {
-			copyright: "Full-Stack Engineer. South Korea (E-7).",
+			copyright: "Khislat Olimov",
 			about: "About",
 			contact: "Contact",
 		},
@@ -294,7 +294,7 @@ export const translations: Record<
 		aboutHeadline:
 			"비즈니스 중심 엔지니어링과 AI 효율성을 통해 시니어 수준의 임팩트를 제공합니다.",
 		aboutBody: [
-			"저는 대한민국에서 활동 중인 Strong Middle Full-Stack 엔지니어이며, E-7(전문직 취업) 비자를 보유하고 있습니다. 저의 소프트웨어 개발 접근 방식은 IT 인프라와 비즈니스 수익성이 만나는 지점을 깊이 이해하는 데 기반하고 있습니다.",
+			"저는 대한민국에서 활동 중인 Full-Stack (5년 경력) 엔지니어이며, E-7(전문직 취업) 비자를 보유하고 있습니다. 저의 소프트웨어 개발 접근 방식은 IT 인프라와 비즈니스 수익성이 만나는 지점을 깊이 이해하는 데 기반하고 있습니다.",
 			"저는 단순히 기능을 개발하지 않습니다. 비즈니스의 병목 현상을 해결합니다. AI 기반 개발 파이프라인을 적극 활용하여 고효율 엔지니어링을 실현해 왔습니다.",
 			"최근에는 멀티 테넌트 의료 ERP 시스템을 단독으로 총괄하여 설계, 개발, 배포까지 전 과정을 3개월 만에 완료했습니다. 이는 일반적으로 훨씬 더 큰 팀이 필요한 프로젝트 규모였습니다.",
 			"저는 수작업 입력과 인적 오류를 획기적으로 줄이는 데 집중합니다. 최근 프로젝트에서는 AI 기반 OCR과 스마트 워크플로우 오케스트레이션을 통해 행정 업무의 80%를 자동화했습니다. 또한 NestJS 백엔드 아키텍처 설계부터 Docker 기반 배포, Nginx 보안 강화까지 전체 라이프사이클에 대한 책임을 직접 수행합니다.",
@@ -401,7 +401,7 @@ export const translations: Record<
 			{
 				role: "풀스택 엔지니어",
 				period: "현재",
-				company: "멀티 테넌트 Clinic ERP (SaaS) · 단독 기술 리드",
+				company: "FindBeauty Company - 대한민국, 서울",
 				points: [
 					"의료 클리닉 및 공급업체(B2B/B2C)를 위한 프로덕션 수준의 멀티 테넌트 ERP 플랫폼을 설계하고 구축했습니다. 확장성과 엄격한 테넌트 데이터 분리, 높은 운영 안정성을 중심으로 설계되었습니다.",
 					"시스템 아키텍처 설계와 50개 이상의 데이터베이스 테이블 구조 설계부터, 100개 이상의 REST API 개발, Next.js 14 기반 프론트엔드 구현, Docker,AWS EC2,Nginx,VPS를 활용한 프로덕션 배포까지 전체 라이프사이클을 단독으로 주도했습니다.",
@@ -475,7 +475,7 @@ export const translations: Record<
 			},
 		],
 		footer: {
-			copyright: "풀스택 엔지니어. 대한민국 (E-7).",
+			copyright: "Khislat Olimov",
 			about: "소개",
 			contact: "연락",
 		},
